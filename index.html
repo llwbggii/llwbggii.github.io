@@ -1,14 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>猜数字游戏</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            margin-top: 0;
+        }
+
+        p {
+            margin-top: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            background-color: #4CAF50;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
 </head>
 
 <body>
-    fangli小傻子，我爱你
+    <h1>猜数字游戏</h1>
+    <h1>humberger发明的猜数字游戏</h1>
+    <p id="guesses">猜数次数：0</p>
+    <p>请输入一个介于1到100之间的数字：</p>
+    <input type="number" id="guess" min="1" max="100" placeholder="输入数字">
+    <button onclick="checkGuess()">猜！</button>
+
+    <script>
+        var secretNumber = Math.floor(Math.random() * 100) + 1; // 生成1到100之间的随机数  
+        var guesses = 0; // 猜数次数  
+        function checkGuess() {
+            var guess = document.getElementById("guess").value; // 获取用户输入的数字  
+            guesses++; // 增加猜数次数  
+            if (guess === secretNumber) {
+                alert("恭喜你，小房真棒！"); // 如果猜对了，弹出提示框  
+                document.getElementById("guesses").textContent = "猜数次数：" + guesses; // 更新猜数次数的显示  
+            } else if (guess < secretNumber) {
+                alert("太小了，再试一次！"); // 如果猜小了，弹出提示框  
+            } else {
+                alert("太大了，再试一次！"); // 如果猜大了，弹出提示框  
+            }
+        }  
+    </script>
 </body>
 
 </html>
